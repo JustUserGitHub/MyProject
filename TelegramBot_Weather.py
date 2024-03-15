@@ -32,9 +32,7 @@ def weather_info(message):
         bot.send_message(message.chat.id, f'{town}\n{temp}\n{feels_likes}\n{wind}\n{pressure}\n{humidity}\n{sunrise}\n{sunset}')
         markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
         item1 = types.KeyboardButton('Weather')
-        item2 = types.KeyboardButton('Назад')
-        markup.add(item1, item2)
-        bot.send_message(message.chat.id, 'Хочешь ещё?\nЕсли да, нажми "Weather".\nЕсли нет - "Назад"', reply_markup=markup)
+        markup.add(item1)
     
     elif url.status_code == 404:
         bot.send_message(message.chat.id, f'Введи корректное название города.')
@@ -51,15 +49,6 @@ def info(message):
         bot.send_message(message.chat.id, f'Твоё случайное число: {random.randint(0, 1000)}')
         markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
         item1 = types.KeyboardButton('RandomNumber')
-        item2 = types.KeyboardButton('Назад')
-        markup.add(item1, item2)
-        bot.send_message(message.chat.id, 'Хочешь ещё?\nЕсли да, нажми "RandomNumber".\nЕсли нет - "Назад"', reply_markup=markup)
+        markup.add(item1)
     
-    elif message.text == 'Назад':
-        markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
-        item1 = types.KeyboardButton('Weather')
-        item2 = types.KeyboardButton('RandomNumber')        
-        markup.add(item1, item2)
-        bot.send_message(message.chat.id, 'Выбери что-нибудь.', reply_markup=markup)
-        
 bot.infinity_polling()
