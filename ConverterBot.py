@@ -51,7 +51,7 @@ def callback(call):
 
 def myconvert(message):
     try:
-        values = message.text.upper().split(',')
+        values = message.text.upper().split('/')
         url = f"https://api.apilayer.com/exchangerates_data/convert?apikey={api_convert_token}&to={values[0]}&from={values[1]}&amount={amount}"
         response = requests.get(url)
         data = response.json()
